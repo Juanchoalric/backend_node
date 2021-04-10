@@ -2,12 +2,13 @@ import express from 'express';
 import data from './data';
 import dotenv from 'dotenv';
 import config from './config';
+import bodyParser from "body-parser";
 import mongoose from 'mongoose';
 import userRoute from './routes/userRoute';
 
 dotenv.config();
 
-const mongodbUrl = config.MONGODB_URL;
+const mongodbUrl = "mongodb+srv://dbecomerce:123Mongo!!@cluster0.hobus.mongodb.net/myFirstDatabase?retryWrites=true&w=majority";
 
 mongoose.connect(mongodbUrl, {
     useNewUrlParser: true,
@@ -17,7 +18,9 @@ mongoose.connect(mongodbUrl, {
 
 const app = express();
 
-app.use("api/users", userRoute);
+app.use(bodyParser.json());
+
+app.use("/api/users", userRoute);
 
 app.get("/api/products/:id", (req, res) => {
     const productId = req.params.id;
