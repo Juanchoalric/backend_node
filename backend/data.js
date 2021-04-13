@@ -10,6 +10,8 @@ export default {
         rating: 4.5,
         numReviews: 10,
         countInStock: 4,
+        isNew: true,
+        cubicCentimeters: 500,
     },
     {
         _id:'124',
@@ -21,6 +23,8 @@ export default {
         rating: 4.5,
         numReviews: 10,
         countInStock: 3,
+        isNew: true,
+        cubicCentimeters: 110,
     },
     {
         _id:'125',
@@ -32,6 +36,8 @@ export default {
         rating: 4.5,
         numReviews: 10,
         countInStock: 3,
+        isNew: true,
+        cubicCentimeters: 110,
     },
 ]
 }
