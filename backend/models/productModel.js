@@ -9,7 +9,7 @@ const productSchema = new mongoose.Schema({
     rating: {type: Number, default:0, required: true},
     numReviews: {type: Number, default:0, required: true},
     countInStock: {type: Number, default:0, required: true},
-    isNew: {type: Boolean, required: true},
+    isItNew: {type: Boolean, required: true},
     cubicCentimeters: {type: Number, required: true},
 });
 

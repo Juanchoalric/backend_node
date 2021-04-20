@@ -13,14 +13,14 @@ router.get("/", async(req, res) => {
 router.post("/", async(req, res) => {
     const product = new Product({
         name: req.body.name,
-        cateogory: req.body.category,
+        category: req.body.category,
         image: req.body.image,
         price: req.body.price,
         brand: req.body.brand,
         rating: req.body.rating,
         numReviews: req.body.numReviews,
         countInStock: req.body.countInStock,
-        isNew: req.body.isNew,
+        isItNew: req.body.isItNew,
         cubicCentimeters: req.body.cubicCentimeters,
     });
     const newProduct = await product.save();
