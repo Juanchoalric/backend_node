@@ -5,10 +5,10 @@ import config from './config';
 import bodyParser from "body-parser";
 import mongoose from 'mongoose';
 import userRoute from './routes/userRoute';
-
+import productRoute from './routes/productRoute';
 dotenv.config();
 
-const mongodbUrl = "mongodb+srv://dbecomerce:123Mongo!!@cluster0.hobus.mongodb.net/myFirstDatabase?retryWrites=true&w=majority";
+const mongodbUrl = "mongodb+srv://dbecomerce:<password>@cluster0.hobus.mongodb.net/myFirstDatabase?retryWrites=true&w=majority";
 
 mongoose.connect(mongodbUrl, {
     useNewUrlParser: true,
@@ -21,7 +21,8 @@ const app = express();
 app.use(bodyParser.json());
 
 app.use("/api/users", userRoute);
-
+app.use("/api/products", productRoute);
+/*
 app.get("/api/products/:id", (req, res) => {
     const productId = req.params.id;
     const product = data.products.find(x=> x._id === productId)
@@ -30,7 +31,7 @@ app.get("/api/products/:id", (req, res) => {
     else
         res.status(404).send({msg: "El producto no existe."});
 });
-
+*/
 app.get("/api/products", (req, res) => {
     res.send(data.products);
 });

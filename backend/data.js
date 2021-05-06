@@ -1,7 +1,6 @@
 export default {
     products: [
     {
-        _id:'123',
         name: "Benelli 502c 0km Cycles Motoshop",
         cateogory: "Moto",
         image: "/images/Benelli.jpg",
@@ -12,7 +11,6 @@ export default {
         countInStock: 4,
     },
     {
-        _id:'124',
         name: "Yamaha Crypton 110",
         cateogory: "Moto",
         image: "/images/Yamaha.jpg",
@@ -23,7 +21,6 @@ export default {
         countInStock: 3,
     },
     {
-        _id:'125',
         name: "Zanella Zb Full 110",
         cateogory: "Moto",
         image: "/images/Zanella.jpg",
