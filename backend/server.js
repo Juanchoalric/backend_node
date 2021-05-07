@@ -58,5 +58,19 @@ app.delete("/api/products/remove/:id", (req, res) => {
     
 });
 
-
+/*app.update("/api/products/update/:id", (req, res) => {
+    const productId = req.params.id;
+    var info = Object.values(req.body);
+    function updateById(val) {
+        for(var f in data.products) {
+            if(data.products[f]['_id'] == val) {
+                data.products[f];
+            }
+        }
+    }
+    updateById(productId)
+    var da = Object.values(data.products);
+    res.send(da);
+    
+});*/
 app.listen(5000, ()=> {console.log("Server started at http://localhost:5000") });
