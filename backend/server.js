@@ -5,7 +5,7 @@ import config from './config';
 import bodyParser from "body-parser";
 import mongoose from 'mongoose';
 import userRoute from './routes/userRoute';
-
+import productRoute from './routes/productRoute';
 dotenv.config();
 
 const mongodbUrl = "mongodb+srv://dbecomerce:123Mongo!!@cluster0.hobus.mongodb.net/myFirstDatabase?retryWrites=true&w=majority";
@@ -17,10 +17,11 @@ mongoose.connect(mongodbUrl, {
 }).catch(error=> console.log(error.reason));
 
 const app = express();
-
+var fs = require("fs");
 app.use(bodyParser.json());
 
 app.use("/api/users", userRoute);
+app.use("/api/products", productRoute);
 
 app.get("/api/products/:id", (req, res) => {
     const productId = req.params.id;
@@ -34,5 +35,28 @@ app.get("/api/products/:id", (req, res) => {
 app.get("/api/products", (req, res) => {
     res.send(data.products);
 });
+
+app.post("/api/products", (req, res) => {
+    var info = Object.values(req.body);
+    var da = Object.values(data.products);
+    da.push(info)
+    res.send(da);
+});
+ 
+app.delete("/api/products/remove/:id", (req, res) => {
+    const productId = req.params.id;
+    function deleteById(val) {
+        for(var f in data.products) {
+            if(data.products[f]['_id'] == val) {
+                delete data.products[f];
+            }
+        }
+    }
+    deleteById(productId)
+    var da = Object.values(data.products);
+    res.send(da);
+    
+});
+
 
 app.listen(5000, ()=> {console.log("Server started at http://localhost:5000") });
