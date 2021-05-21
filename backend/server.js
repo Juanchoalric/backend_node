@@ -23,6 +23,7 @@ app.use(bodyParser.json());
 app.use("/api/users", userRoute);
 app.use("/api/products", productRoute);
 
+/*
 app.get("/api/products/:id", (req, res) => {
     const productId = req.params.id;
     const product = data.products.find(x=> x._id === productId)
@@ -31,18 +32,21 @@ app.get("/api/products/:id", (req, res) => {
     else
         res.status(404).send({msg: "El producto no existe."});
 });
-
+*/
+/*
 app.get("/api/products", (req, res) => {
     res.send(data.products);
 });
-
+*/
+/*
 app.post("/api/products", (req, res) => {
     var info = Object.values(req.body);
     var da = Object.values(data.products);
     da.push(info)
     res.send(da);
 });
- 
+*/
+/*
 app.delete("/api/products/remove/:id", (req, res) => {
     const productId = req.params.id;
     function deleteById(val) {
@@ -57,7 +61,7 @@ app.delete("/api/products/remove/:id", (req, res) => {
     res.send(da);
     
 });
-
+*/
 /*app.update("/api/products/update/:id", (req, res) => {
     const productId = req.params.id;
     var info = Object.values(req.body);
