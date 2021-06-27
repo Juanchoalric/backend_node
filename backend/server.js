@@ -6,6 +6,7 @@ import bodyParser from "body-parser";
 import mongoose from 'mongoose';
 import userRoute from './routes/userRoute';
 import productRoute from './routes/productRoute';
+import productCartRoute from './routes/productCartRoute';
 dotenv.config();
 
 const mongodbUrl = "mongodb+srv://dbecomerce:123Mongo!!@cluster0.hobus.mongodb.net/myFirstDatabase?retryWrites=true&w=majority";
@@ -22,7 +23,7 @@ app.use(bodyParser.json());
 
 app.use("/api/users", userRoute);
 app.use("/api/products", productRoute);
-
+app.use("/api/productsCart", productCartRoute);
 /*
 app.get("/api/products/:id", (req, res) => {
     const productId = req.params.id;

@@ -1,6 +1,6 @@
 import mongoose from 'mongoose';
 
-const productSchema = new mongoose.Schema({
+const productCartSchema = new mongoose.Schema({
     name: {type: String, required: true, unique: true},
     category: {type: String, required: true},
     userName: {type:String, required: true},
@@ -8,10 +8,9 @@ const productSchema = new mongoose.Schema({
     price: {type: Number, default:0, required: true},
     brand: {type: String, required: true},
     description: {type: String, required: true},
-    countInStock: {type: Number, default:1, required: true},
+    ownerName: {type:String, required: true}
 });
 
-const productModel = mongoose.model("Product", productSchema);
+const productCartModel = mongoose.model("ProductCart", productCartSchema);
 
-export default productModel;
-
+export default productCartModel;

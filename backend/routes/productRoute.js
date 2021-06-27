@@ -18,7 +18,8 @@ router.post("/", isAuth, isAdmin, async(req, res) => {
         price: req.body.price,
         brand: req.body.brand,
         countInStock: req.body.countInStock,
-        description: req.body.description
+        description: req.body.description,
+        userName: req.body.userName
     });
     const newProduct = await product.save();
     if (newProduct){
