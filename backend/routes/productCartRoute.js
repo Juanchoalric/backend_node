@@ -16,17 +16,17 @@ router.post("/", isAuth, async(req, res) => {
     Object.values(data).forEach(function (element) {
         products.push(new ProductCart({
             name: element.name,
-            category: element.category,
             image: element.image,
             price: element.price,
-            brand: element.brand,
             countInStock: element.countInStock,
-            description: element.description,
             userName: element.userName
         }));
     });
-    const newProduct = await products.save();
-    console.log(products["cartItems"]);
+
+    let newProduct = await element.save();
+
+    
+    console.log(products);
         if (newProduct){
             return res.status(201).send({message: 'Products confirmed', data: newProduct});
         }
