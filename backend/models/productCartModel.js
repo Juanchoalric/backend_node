@@ -8,7 +8,6 @@ const productCartSchema = new mongoose.Schema({
     price: {type: Number, default:0, required: true},
     brand: {type: String, required: true},
     description: {type: String, required: true},
-    ownerName: {type:String, required: true}
 });
 
 const productCartModel = mongoose.model("ProductCart", productCartSchema);

@@ -12,7 +12,8 @@ router.get("/", async(req, res) => {
 
 router.post("/", isAuth, async(req, res) => {
     let products = [];
-    req.body.forEach(element => {
+    let data = req.body;
+    Object.values(data).forEach(function (element) {
         products.push(new ProductCart({
             name: element.name,
             category: element.category,
@@ -25,7 +26,7 @@ router.post("/", isAuth, async(req, res) => {
         }));
     });
     const newProduct = await products.save();
-
+    console.log(products["cartItems"]);
         if (newProduct){
             return res.status(201).send({message: 'Products confirmed', data: newProduct});
         }
