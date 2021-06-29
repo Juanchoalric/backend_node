@@ -13,22 +13,26 @@ router.get("/", async(req, res) => {
 router.post("/", isAuth, async(req, res) => {
     let products = [];
     let data = req.body;
-    Object.values(data).forEach(function (element) {
-        products.push(new ProductCart({
-            name: element.name,
-            image: element.image,
-            price: element.price,
-            countInStock: element.countInStock,
-            userName: element.userName
-        }));
+    console.log(data)
+    Object.values(data).forEach(function (elements) {
+        elements.forEach(element => {
+            console.log(element)
+            let product = new ProductCart({
+                name: element.name,
+                image: element.image,
+                price: element.price,
+                userName: element.userName,
+                buyer: element.buyer
+            });
+            product.save();
+            console.log(product)
+        });
     });
-
-    let newProduct = await element.save();
 
     
     console.log(products);
-        if (newProduct){
-            return res.status(201).send({message: 'Products confirmed', data: newProduct});
+        if (1){
+            return res.status(201).send({message: 'Products confirmed', data: ["1"]});
         }
     return res.status(500).send({message: 'Error in creating product'})
 });
