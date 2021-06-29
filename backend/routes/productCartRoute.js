@@ -1,13 +1,13 @@
 import express from 'express';
 import { Mongoose } from 'mongoose';
-import ProductCart from '../models/productCartModel';
+import productCart from '../models/productCartModel';
 import { getToken, isAdmin, isAuth } from '../utils';
 
 const router = express.Router();
 
 router.get("/", async(req, res) => {
-    const products = await Product.find({});
-    res.send(products);
+    const ProductCart = await ProductCart.find({});
+    res.send(ProductCart);
 });
 
 router.post("/", isAuth, async(req, res) => {
