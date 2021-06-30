@@ -6,7 +6,7 @@ import { getToken, isAdmin, isAuth } from '../utils';
 const router = express.Router();
 
 router.get("/", async(req, res) => {
-    const ProductCart = await ProductCart.find({});
+    const ProductCart = await productCart.find({});
     res.send(ProductCart);
 });
 
