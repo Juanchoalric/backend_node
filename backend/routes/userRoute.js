@@ -18,6 +18,9 @@ router.post('/signin', async (req, res) => {
                 _id: signinUser.id,
                 name: signinUser.name,
                 email: signinUser.email,
+                location: signinUser.location,
+                address: signinUser.address,
+                addressNumber: signinUser.addressNumber,
                 isAdmin: signinUser.isAdmin,
                 token: getToken(signinUser)
             })
@@ -37,7 +40,10 @@ router.post('/register', async (req, res) => {
         const user = new User({
             name: req.body.name,
             email: req.body.email,
-            password: req.body.password
+            password: req.body.password,
+            location: req.body.location,
+            address: req.body.address,
+            addressNumber: req.body.addressNumber,
         });
 
         const newUser = await user.save()
@@ -48,6 +54,9 @@ router.post('/register', async (req, res) => {
                 name: signinUser.name,
                 email: signinUser.email,
                 isAdmin: signinUser.isAdmin,
+                location: req.body.location,
+                address: req.body.address,
+                addressNumber: req.body.addressNumber,
                 token: getToken(newUser)
             })
         } else {
@@ -67,6 +76,9 @@ router.get("/createadmin", async (req, res)=>{
             name:"juan cruz alric",
             email: 'alricjuancruz@gmail.com',
             password: '1234',
+            location: "CABA",
+            address: "Av. Siempre Viva",
+            addressNumber: 1234,
             isAdmin: true,
         });
     
