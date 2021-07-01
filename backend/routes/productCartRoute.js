@@ -17,12 +17,15 @@ router.post("/", isAuth, async(req, res) => {
     Object.values(data).forEach(function (elements) {
         elements.forEach(element => {
             console.log(element)
-            let product = new ProductCart({
+            let product = new productCart({
                 name: element.name,
                 image: element.image,
                 price: element.price,
-                userName: element.userName,
-                buyer: element.buyer
+                address: element.address,
+                buyer: element.buyer,
+                addressNumber: element.addressNumber,
+                location: element.location,
+                userName: element.userName
             });
             product.save();
             console.log(product)
