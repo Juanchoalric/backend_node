@@ -19,6 +19,7 @@ mongoose.connect(mongodbUrl, {
 
 const app = express();
 var fs = require("fs");
+app.use(bodyParser({limit: '50mb'}));
 app.use(bodyParser.json());
 
 app.use("/api/users", userRoute);
