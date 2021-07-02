@@ -43,7 +43,9 @@ router.put("/:id", isAuth, isAdmin, async(req, res) => {
     if (product){
         product.name= req.body.name;
         product.category= req.body.category;
-        product.image= req.body.image;
+        if (req.body.image != ""){
+            product.image= req.body.image;
+        } 
         product.price= req.body.price;
         product.brand= req.body.brand;
         product.countInStock= 1;
