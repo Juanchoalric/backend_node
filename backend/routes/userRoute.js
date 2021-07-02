@@ -1,7 +1,7 @@
 import express from 'express';
 import { Mongoose } from 'mongoose';
 import User from '../models/userModel';
-import { getToken } from '../utils';
+import { getTokenk, isAuth } from '../utils';
 
 const router = express.Router();
 
@@ -67,6 +67,24 @@ router.post('/register', async (req, res) => {
     }
     
 
+});
+
+router.put("/:id", isAuth, async(req, res) => {
+    const userId = req.params.id;
+    const user = await User.findById({name: userId});
+    if (user){
+        user.category= req.body.email;
+        user.image= req.body.password;
+        user.location= req.body.location;
+        user.address= req.body.address;
+        user.addressNumber= req.body.addressNumber;
+
+        const updateUser = await user.save();
+        if (updateUser){
+            return res.status(200).send({message: 'Se modifico el usuario', data: updateUser});
+        }
+    }
+    return res.status(500).send({message: 'Error al modificar el usuario'});
 });
 
 router.get("/createadmin", async (req, res)=>{
