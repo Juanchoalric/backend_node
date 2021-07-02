@@ -1,7 +1,7 @@
 import express from 'express';
 import { Mongoose } from 'mongoose';
 import User from '../models/userModel';
-import { getTokenk, isAuth } from '../utils';
+import { getToken, isAuth } from '../utils';
 
 const router = express.Router();
 
