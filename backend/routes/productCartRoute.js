@@ -40,4 +40,14 @@ router.post("/", isAuth, async(req, res) => {
     return res.status(500).send({message: 'Error in creating product'})
 });
 
+router.delete("/:id", isAuth, isAdmin, async(req, res) => {
+    const deletedProduct = await productCart.findById(req.params.id);
+    if (deletedProduct){
+        await deletedProduct.remove();
+        res.send({message: "Product Bought Deleted"});
+    } else {
+        res.send("Error al eleminar el producto comprado")
+    }
+});
+
 export default router;
