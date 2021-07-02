@@ -5,6 +5,12 @@ import { getToken, isAuth } from '../utils';
 
 const router = express.Router();
 
+
+router.get("/", async(req, res) => {
+    const users = await User.find({});
+    res.send(users);
+});
+
 router.post('/signin', async (req, res) => {
 
     try {
@@ -15,7 +21,7 @@ router.post('/signin', async (req, res) => {
     
         if (signinUser) {
             res.send({
-                _id: signinUser.id,
+                _id: signinUser._id,
                 name: signinUser.name,
                 email: signinUser.email,
                 location: signinUser.location,
@@ -50,7 +56,7 @@ router.post('/register', async (req, res) => {
 
         if(newUser){
             res.send({
-                _id: signinUser.id,
+                _id: signinUser._id,
                 name: signinUser.name,
                 email: signinUser.email,
                 isAdmin: signinUser.isAdmin,
@@ -71,14 +77,26 @@ router.post('/register', async (req, res) => {
 
 router.put("/:id", isAuth, async(req, res) => {
     const userId = req.params.id;
-    const user = await User.findById({name: userId});
+    
+    const user = await User.findById({_id: userId});
+    console.log(user)
     if (user){
-        user.category= req.body.email;
-        user.image= req.body.password;
-        user.location= req.body.location;
-        user.address= req.body.address;
-        user.addressNumber= req.body.addressNumber;
-
+        if (req.body.location != ""){
+            user.location= req.body.location;
+        }
+        if (req.body.address != ""){
+            user.address= req.body.address;
+        }
+        if (req.body.addressNumber != ""){
+            user.addressNumber= req.body.addressNumber;
+        }
+        if (req.body.name != ""){
+            user.name= req.body.name;
+        }
+        if (req.body.password != ""){
+            user.password= req.body.password;
+        }
+        
         const updateUser = await user.save();
         if (updateUser){
             return res.status(200).send({message: 'Se modifico el usuario', data: updateUser});
